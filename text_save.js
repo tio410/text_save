@@ -21,7 +21,7 @@ $(function() {
 	function on_view(){
 		var newWindow;
 		//モータルで新しいウィンドウをを表示する。第二引数は値渡し。
-		newWindow=window.showModalDialog("id_dialog.html",local_name,"dialogHeight:250px; dialogWidth:360px; scroll:0; status:0; resizable:0"); 　
+		newWindow=window.showModalDialog("dialog.html",local_name,"dialogHeight:250px; dialogWidth:360px; scroll:0; status:0; resizable:0"); 　
 
 		//ダイアログで選択されたIDとパスワード受け取り、テキストに代入する。
 		if (typeof(newWindow)!="undefined") { //ダイアログボックスで｢キャンセル時｣の処置(変数の存在チェック)
