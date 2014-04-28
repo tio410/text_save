@@ -25,8 +25,8 @@ $(function() {
 
 		//ダイアログで選択されたIDとパスワード受け取り、テキストに代入する。
 		if (typeof(newWindow)!="undefined") { //ダイアログボックスで｢キャンセル時｣の処置(変数の存在チェック)
-			document.all.ad_key.value = newWindow.key;
-			document.all.ad_passwd.value = newWindow.pass;
+			document.all.ad_key.value = newWindow.key;//カスタマイズ
+			document.all.ad_passwd.value = newWindow.pass;//カスタマイズ
 		}
 	}
 
