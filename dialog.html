@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>確認</title>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	google.load("jquery", "1");
+</script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<style type="text/css">
+<!--
+.hl{
+	background-color: #fff4f8;
+	cursor: pointer;
+}
+</style>
+<script type="text/javascript">
+<!--
+$(function() {
+	//初期設定
+	var storage_Data = JSON.parse(localStorage.getItem(window.dialogArguments));
+	document.onkeydown=keys;
+
+	//
+	if(storage_Data){
+		var count = Object.keys(storage_Data).length;
+		var objBody = document.getElementsByTagName("body").item(0);
+		for (var i = count; i>0;i--){
+		        var element = document.createElement('ul');
+			if(storage_Data[i-1]['key']!=null && storage_Data[i-1]['pass'] !=null){
+		            	element.setAttribute('key',storage_Data[i-1]['key']);
+		            	element.setAttribute('pass',storage_Data[i-1]['pass']);
+		        	element.innerHTML = storage_Data[i-1]['key'];
+			        objBody.appendChild(element);
+			}
+	  	}
+	}
+
+	//リロード禁止処理(F5 or Ctrl + R)
+	function keys(){
+		switch (event.keyCode){
+			case 116: // F5
+			case 82: // Ctrl + R　
+			event.keyCode = 0;
+			return false;
+			break;
+		}
+	}
+
+
+	//マウスオーバー処理(ハイライト処理)
+	$("ul").hover(
+		function(){
+			//hoverクラス「hv」を追加する
+			$(this).addClass('hl');
+		},
+			//マウスアウトしたら
+			function(){
+			//hoverクラス「hv」を削除する
+			$(this).removeClass('hl');
+		}
+	);
+});
+
+//ulリスト押下処理
+$("ul").live("click", function(){
+	var checked = $("[name='change']:checked").val();
+	var Obj = new Object();
+	Obj['key'] = $(this).attr("key");
+	Obj['pass'] = $(this).attr("pass");
+	//取得したIDとパスワードの配列を返す
+	window.returnValue=Obj;
+	self.window.close();
+});
+
+//localstorage削除
+function del() {
+	localStorage.removeItem(window.dialogArguments)
+	self.window.close();
+}
+
+
+//-->
+</script>
+</head>
+<body style="background-color:#c0c0c0;border-style:outset;">
+<table align="center" width="350" cellpadding="0" cellspacing="10" style="font-size:10pt;line-height:150%;">
+<colgroup align="center" valign="middle"></colgroup>
+<tr><td>
+<form name="FORM">
+<button type="submit" onclick="window.close();">キャンセル</button>
+<button type="submit" onclick="del();return false;">ALL削除</button>
+</form>
+</td></tr>
+<tr><td>
+</td></tr>
+</table>
+</body>
+</html>
